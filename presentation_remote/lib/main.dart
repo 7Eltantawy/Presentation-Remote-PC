@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:presentation_remote/screens/screen.dart';
 
 import 'screens/qr_code_reader.dart';
 
@@ -16,7 +17,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Presentation Remote',
       theme: ThemeData.dark(),
-      home: const QRCodeReader(),
+      home: const Screen(),
+      // home: const QRCodeReader(),
     );
   }
 }
