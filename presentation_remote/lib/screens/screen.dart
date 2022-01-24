@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:presentation_remote/logic/transimitter_manager.dart';
 import 'package:presentation_remote/widget/direction_pad.dart';
 import 'package:presentation_remote/widget/mouse_controller.dart';
-import 'package:presentation_remote/widget/swipe_gesture_recognizer.dart';
 
 class Screen extends StatefulWidget {
   const Screen({Key? key}) : super(key: key);
@@ -11,14 +10,19 @@ class Screen extends StatefulWidget {
 }
 
 class _ScreenState extends State<Screen> with SingleTickerProviderStateMixin {
-  String dir = "Direction appear here";
   late TabController tabController;
   @override
   void initState() {
     TransimitterManager.send(key: "Connected");
     tabController = TabController(length: 3, vsync: this);
-    dir = "Direction appear here";
+
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    TransimitterManager.send(key: "Disconnected");
+    super.dispose();
   }
 
   @override

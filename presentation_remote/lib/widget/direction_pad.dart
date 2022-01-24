@@ -22,16 +22,16 @@ class _DirectionPadState extends State<DirectionPad> {
         )),
         SwipeGestureRecognizer(
           onSwipeDown: () async {
-            await TransimitterManager.send(key: "Previous");
+            await TransimitterManager.send(key: "Down");
           },
           onSwipeUp: () async {
-            await TransimitterManager.send(key: "Next");
+            await TransimitterManager.send(key: "Up");
           },
           onSwipeLeft: () async {
-            await TransimitterManager.send(key: "Previous");
+            await TransimitterManager.send(key: "Left");
           },
           onSwipeRight: () async {
-            await TransimitterManager.send(key: "Next");
+            await TransimitterManager.send(key: "Right");
           },
         ),
       ],

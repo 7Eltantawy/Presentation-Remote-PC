@@ -5,12 +5,9 @@ import 'package:presentation_remote/udp/udp_endpoint.dart';
 import 'package:presentation_remote/udp/udp_port.dart';
 
 class TransimitterManager {
-  static String server = "192.168.1.4";
+  static String server = "127.0.0.1";
   static const int port = 1111;
-  static String? password = "vads9216JX";
-  // static String server = "127.0.0.1";
-  // static const int port = 1111;
-  // static String? password = "";
+  static String? password = "";
 
   //mouseX : "+1" rigth | "-1" left
   //mouseY : "+1" up | "-1" down
