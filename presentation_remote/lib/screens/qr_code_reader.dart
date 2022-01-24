@@ -4,7 +4,7 @@ import 'package:presentation_remote/logic/transimitter_manager.dart';
 import 'package:presentation_remote/logic/utils.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
-import 'screen.dart';
+import 'dashboard.dart';
 
 class QRCodeReader extends StatefulWidget {
   const QRCodeReader({Key? key}) : super(key: key);
@@ -146,7 +146,7 @@ class _QRCodeReaderState extends State<QRCodeReader> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const Screen(),
+                                  builder: (context) => const Dashboard(),
                                 ),
                               );
                             }
