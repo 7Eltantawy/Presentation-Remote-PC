@@ -1,4 +1,5 @@
 [![version](https://img.shields.io/badge/version-1.0.0-yellow.svg)](https://github.com/HasanEltantawy/Presentation-Remote-PC)
+![GitHub all releases](https://img.shields.io/github/downloads/HasanEltantawy/Presentation-Remote-PC/total?color=green&label=Total%20Downloads)
 
 <p align="Left">
   <img src="https://user-images.githubusercontent.com/50374022/150793311-95cd0e16-a144-48d5-8bb7-c2aefc868e97.png" width="100" >
@@ -8,6 +9,21 @@
 Manage your presentation from your smart phone - Phone Client
 
 The App use UDP connection to send data
+
+# Features
+
+v1.1.0
+- Volume buttons now control presentation.
+- Improvement in first screen
+- Improvement in mouse pad you can now 
+	- click on pad to left click.
+	- long click on pad to right click.
+
+V1.0.0
+- Remote mouse.
+- Remote presentation controller.
+- Free and open source.
+- Ads Free.
 
 # Screenshots 
 
