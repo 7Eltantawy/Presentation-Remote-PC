@@ -23,6 +23,12 @@ class _MouseControllerState extends State<MouseController> {
                 style: TextStyle(fontSize: 30),
               )),
               GestureDetector(
+                onLongPress: () async {
+                  await TransimitterManager.send(click: "R");
+                },
+                onTap: () async {
+                  await TransimitterManager.send(click: "L");
+                },
                 onPanUpdate: (details) async {
                   // Swiping in Hor direction.
                   int? x = 0, y = 0;

@@ -44,10 +44,12 @@ class _QRCodeReaderState extends State<QRCodeReader> {
 
   Widget startWidget() {
     return Center(
-      child: ListTile(
-        title: const Text("Scan QR",
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 40, color: Colors.greenAccent)),
+      child: InkWell(
+        child: const Center(
+          child: Text("Click to Scan QR",
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 30, color: Colors.greenAccent)),
+        ),
         onTap: () {
           setState(() {
             startScan = true;
