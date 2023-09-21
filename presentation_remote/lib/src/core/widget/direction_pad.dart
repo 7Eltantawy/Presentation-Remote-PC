@@ -1,10 +1,10 @@
 import 'package:flutter/widgets.dart';
-import 'package:presentation_remote/logic/transmitter_manager.dart';
+import 'package:presentation_remote/src/core/logic/transmitter_manager.dart';
 
-import 'package:presentation_remote/widget/swipe_gesture_recognizer.dart';
+import 'package:presentation_remote/src/core/widget/swipe_gesture_recognizer.dart';
 
 class DirectionPad extends StatefulWidget {
-  const DirectionPad({Key? key}) : super(key: key);
+  const DirectionPad({super.key});
 
   @override
   _DirectionPadState createState() => _DirectionPadState();

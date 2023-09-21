@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:presentation_remote/logic/transmitter_manager.dart';
+import 'package:presentation_remote/src/core/logic/transmitter_manager.dart';
 
 class MouseController extends StatefulWidget {
-  const MouseController({Key? key}) : super(key: key);
+  const MouseController({super.key});
 
   @override
   _MouseControllerState createState() => _MouseControllerState();

@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
-import 'package:presentation_remote/udp/udp_base.dart';
-import 'package:presentation_remote/udp/udp_endpoint.dart';
-import 'package:presentation_remote/udp/udp_port.dart';
+import 'package:presentation_remote/src/core/udp/udp_base.dart';
+import 'package:presentation_remote/src/core/udp/udp_endpoint.dart';
+import 'package:presentation_remote/src/core/udp/udp_port.dart';
 
 class TransmitterManager {
   static String server = "127.0.0.1";

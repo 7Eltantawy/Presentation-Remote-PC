@@ -34,7 +34,7 @@
 
 import 'dart:io';
 
-import 'package:presentation_remote/udp/udp_port.dart';
+import 'package:presentation_remote/src/core/udp/udp_port.dart';
 
 /// [Endpoint] represents a destination for UDP packets.
 ///

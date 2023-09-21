@@ -1,13 +1,13 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:presentation_remote/logic/transmitter_manager.dart';
-import 'package:presentation_remote/logic/utils.dart';
-import 'package:presentation_remote/screens/dashboard.dart';
+import 'package:presentation_remote/src/core/extension/string.dart';
+import 'package:presentation_remote/src/core/logic/transmitter_manager.dart';
+import 'package:presentation_remote/src/features/dashboard/presentation/screens/dashboard.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 class QRCodeReader extends StatefulWidget {
-  const QRCodeReader({Key? key}) : super(key: key);
+  const QRCodeReader({super.key});
 
   @override
   State<StatefulWidget> createState() => _QRCodeReaderState();
@@ -85,7 +85,7 @@ class _QRCodeReaderState extends State<QRCodeReader> {
   @override
   Widget build(BuildContext context) {
     if (result != null) {
-      if (isIP('${result!.code?.split(",")[1]}')) {
+      if ('${result!.code?.split(",")[1]}'.isIP()) {
         setState(() {
           // 'IP: ${result!.code?.split(",")[1]}\nPassword: ${result!.code?.split(",")[0]} '
           TransmitterManager.server = '${result!.code?.split(",")[1].trim()}';
@@ -150,7 +150,7 @@ class _QRCodeReaderState extends State<QRCodeReader> {
                                 ),
                           onTap: () {
                             if (result != null) {
-                              if (isIP('${result!.code?.split(",")[1]}')) {
+                              if ('${result!.code?.split(",")[1]}'.isIP()) {
                                 setState(() {
                                   // 'IP: ${result!.code?.split(",")[1]}\nPassword: ${result!.code?.split(",")[0]} '
                                   TransmitterManager.server =

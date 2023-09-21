@@ -11,13 +11,13 @@ class SwipeGestureRecognizer extends StatefulWidget {
   final Function() onSwipeDown;
   final Widget? child;
   const SwipeGestureRecognizer({
-    Key? key,
+    super.key,
     this.child,
     required this.onSwipeDown,
     required this.onSwipeLeft,
     required this.onSwipeRight,
     required this.onSwipeUp,
-  }) : super(key: key);
+  });
 
   @override
   _SwipeGestureRecognizerState createState() => _SwipeGestureRecognizerState();

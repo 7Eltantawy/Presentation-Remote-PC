@@ -1,12 +1,12 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:presentation_remote/logic/transmitter_manager.dart';
-import 'package:presentation_remote/widget/direction_pad.dart';
-import 'package:presentation_remote/widget/mouse_controller.dart';
+import 'package:presentation_remote/src/core/logic/transmitter_manager.dart';
+import 'package:presentation_remote/src/core/widget/direction_pad.dart';
+import 'package:presentation_remote/src/core/widget/mouse_controller.dart';
 
 class Dashboard extends StatefulWidget {
-  const Dashboard({Key? key}) : super(key: key);
+  const Dashboard({super.key});
   @override
   State<Dashboard> createState() => _DashboardState();
 }

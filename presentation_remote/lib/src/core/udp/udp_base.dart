@@ -35,7 +35,7 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:presentation_remote/udp/udp_endpoint.dart';
+import 'package:presentation_remote/src/core/udp/udp_endpoint.dart';
 
 typedef DatagramCallback = void Function(Datagram);
 
