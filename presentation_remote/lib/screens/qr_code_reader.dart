@@ -1,10 +1,10 @@
 import 'dart:io';
-import 'package:flutter/material.dart';
-import 'package:presentation_remote/logic/transimitter_manager.dart';
-import 'package:presentation_remote/logic/utils.dart';
-import 'package:qr_code_scanner/qr_code_scanner.dart';
 
-import 'dashboard.dart';
+import 'package:flutter/material.dart';
+import 'package:presentation_remote/logic/transmitter_manager.dart';
+import 'package:presentation_remote/logic/utils.dart';
+import 'package:presentation_remote/screens/dashboard.dart';
+import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 class QRCodeReader extends StatefulWidget {
   const QRCodeReader({Key? key}) : super(key: key);
@@ -46,9 +46,11 @@ class _QRCodeReaderState extends State<QRCodeReader> {
     return Center(
       child: InkWell(
         child: const Center(
-          child: Text("Click to Scan QR",
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 30, color: Colors.greenAccent)),
+          child: Text(
+            "Click to Scan QR",
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 30, color: Colors.greenAccent),
+          ),
         ),
         onTap: () {
           setState(() {
@@ -59,12 +61,14 @@ class _QRCodeReaderState extends State<QRCodeReader> {
     );
   }
 
-  Widget retyWidget() {
+  Widget retryWidget() {
     return Center(
       child: ListTile(
-        title: const Text("Rescan QR",
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 40, color: Colors.redAccent)),
+        title: const Text(
+          "Rescan QR",
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 40, color: Colors.redAccent),
+        ),
         onTap: () {
           setState(() {
             restart();
@@ -84,10 +88,9 @@ class _QRCodeReaderState extends State<QRCodeReader> {
       if (isIP('${result!.code?.split(",")[1]}')) {
         setState(() {
           // 'IP: ${result!.code?.split(",")[1]}\nPassword: ${result!.code?.split(",")[0]} '
-          TransimitterManager.server = '${result!.code?.split(",")[1].trim()}';
-          TransimitterManager.password =
-              '${result!.code?.split(",")[0].trim()}';
-          TransimitterManager.send(key: "Connected");
+          TransmitterManager.server = '${result!.code?.split(",")[1].trim()}';
+          TransmitterManager.password = '${result!.code?.split(",")[0].trim()}';
+          TransmitterManager.send(key: "Connected");
         });
       }
     }
@@ -103,60 +106,72 @@ class _QRCodeReaderState extends State<QRCodeReader> {
                           key: qrKey,
                           onQRViewCreated: _onQRViewCreated,
                         )
-                      : retyWidget(),
+                      : retryWidget(),
                 ),
                 Expanded(
                   flex: (result != null) ? 2 : 1,
                   child: Center(
-                      child: Column(
-                    children: [
-                      (result != null)
-                          ? Padding(
-                              padding: const EdgeInsets.all(20.0),
-                              child: Text(
-                                'IP: ${result!.code?.split(",")[1]}\nPassword: ${result!.code?.split(",")[0]} ',
-                                style: const TextStyle(fontSize: 20),
-                                textAlign: TextAlign.center,
-                              ),
-                            )
-                          : const Padding(
-                              padding: EdgeInsets.all(20.0),
-                              child: Text('Scanned code',
-                                  style: TextStyle(fontSize: 20)),
+                    child: Column(
+                      children: [
+                        if (result != null)
+                          Padding(
+                            padding: const EdgeInsets.all(20.0),
+                            child: Text(
+                              'IP: ${result!.code?.split(",")[1]}\nPassword: ${result!.code?.split(",")[0]} ',
+                              style: const TextStyle(fontSize: 20),
+                              textAlign: TextAlign.center,
                             ),
-                      ListTile(
-                        title: (result != null)
-                            ? const Text("Start Session!",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize: 20, color: Colors.blueAccent))
-                            : const Text("Waiting ....",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize: 20, color: Colors.orangeAccent)),
-                        onTap: () {
-                          if (result != null) {
-                            if (isIP('${result!.code?.split(",")[1]}')) {
-                              setState(() {
-                                // 'IP: ${result!.code?.split(",")[1]}\nPassword: ${result!.code?.split(",")[0]} '
-                                TransimitterManager.server =
-                                    '${result!.code?.split(",")[1].trim()}';
-                                TransimitterManager.password =
-                                    '${result!.code?.split(",")[0].trim()}';
-                              });
-
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const Dashboard(),
+                          )
+                        else
+                          const Padding(
+                            padding: EdgeInsets.all(20.0),
+                            child: Text(
+                              'Scanned code',
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          ),
+                        ListTile(
+                          title: (result != null)
+                              ? const Text(
+                                  "Start Session!",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.blueAccent,
+                                  ),
+                                )
+                              : const Text(
+                                  "Waiting ....",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.orangeAccent,
+                                  ),
                                 ),
-                              );
+                          onTap: () {
+                            if (result != null) {
+                              if (isIP('${result!.code?.split(",")[1]}')) {
+                                setState(() {
+                                  // 'IP: ${result!.code?.split(",")[1]}\nPassword: ${result!.code?.split(",")[0]} '
+                                  TransmitterManager.server =
+                                      '${result!.code?.split(",")[1].trim()}';
+                                  TransmitterManager.password =
+                                      '${result!.code?.split(",")[0].trim()}';
+                                });
+
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const Dashboard(),
+                                  ),
+                                );
+                              }
                             }
-                          }
-                        },
-                      )
-                    ],
-                  )),
+                          },
+                        )
+                      ],
+                    ),
+                  ),
                 )
               ],
             ),

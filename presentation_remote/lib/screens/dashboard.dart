@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:presentation_remote/logic/transimitter_manager.dart';
+import 'package:presentation_remote/logic/transmitter_manager.dart';
 import 'package:presentation_remote/widget/direction_pad.dart';
 import 'package:presentation_remote/widget/mouse_controller.dart';
 
@@ -34,90 +34,95 @@ class _DashboardState extends State<Dashboard>
         }
       }
 
-      return Future.value(null);
+      return Future.value();
     });
   }
 
-  volumeButtonUp() async {
-    await TransimitterManager.send(key: "Up");
+  Future volumeButtonUp() async {
+    await TransmitterManager.send(key: "Up");
   }
 
-  volumeButtonDown() async {
-    await TransimitterManager.send(key: "Down");
+  Future volumeButtonDown() async {
+    await TransmitterManager.send(key: "Down");
   }
 
   @override
   void dispose() {
     super.dispose();
 
-    TransimitterManager.send(key: "Disconnected");
+    TransmitterManager.send(key: "Disconnected");
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          bottom: TabBar(
-            controller: tabController,
-            tabs: const [
-              Tab(
-                icon: Icon(Icons.mouse),
-                text: "Mouse",
-              ),
-              Tab(
-                icon: Icon(Icons.keyboard),
-                text: "Arrows",
-              ),
-              Tab(
-                icon: Icon(Icons.control_point_rounded),
-                text: "All",
-              ),
-            ],
-          ),
-          title: const Text("Presentation Remote"),
-          centerTitle: true,
-        ),
-        body: TabBarView(
+      appBar: AppBar(
+        bottom: TabBar(
           controller: tabController,
-          physics: const NeverScrollableScrollPhysics(),
-          children: [
-            Scaffold(
-              body: Column(
-                children: const [
-                  Expanded(
-                    child: Card(
-                        margin: EdgeInsets.all(10), child: MouseController()),
-                  ),
-                ],
-              ),
+          tabs: const [
+            Tab(
+              icon: Icon(Icons.mouse),
+              text: "Mouse",
             ),
-            Scaffold(
-              body: Column(
-                children: const [
-                  Expanded(
-                    child:
-                        Card(margin: EdgeInsets.all(10), child: DirectionPad()),
-                  ),
-                ],
-              ),
+            Tab(
+              icon: Icon(Icons.keyboard),
+              text: "Arrows",
             ),
-            Scaffold(
-              body: Column(
-                children: const [
-                  Expanded(
-                    flex: 2,
-                    child:
-                        Card(margin: EdgeInsets.all(10), child: DirectionPad()),
-                  ),
-                  Expanded(
-                    flex: 4,
-                    child: Card(
-                        margin: EdgeInsets.all(10), child: MouseController()),
-                  ),
-                ],
-              ),
+            Tab(
+              icon: Icon(Icons.control_point_rounded),
+              text: "All",
             ),
           ],
-        ));
+        ),
+        title: const Text("Presentation Remote"),
+        centerTitle: true,
+      ),
+      body: TabBarView(
+        controller: tabController,
+        physics: const NeverScrollableScrollPhysics(),
+        children: const [
+          Scaffold(
+            body: Column(
+              children: [
+                Expanded(
+                  child: Card(
+                    margin: EdgeInsets.all(10),
+                    child: MouseController(),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Scaffold(
+            body: Column(
+              children: [
+                Expanded(
+                  child:
+                      Card(margin: EdgeInsets.all(10), child: DirectionPad()),
+                ),
+              ],
+            ),
+          ),
+          Scaffold(
+            body: Column(
+              children: [
+                Expanded(
+                  flex: 2,
+                  child:
+                      Card(margin: EdgeInsets.all(10), child: DirectionPad()),
+                ),
+                Expanded(
+                  flex: 4,
+                  child: Card(
+                    margin: EdgeInsets.all(10),
+                    child: MouseController(),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

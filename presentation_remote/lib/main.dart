@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/qr_code_reader.dart';
+import 'package:presentation_remote/screens/qr_code_reader.dart';
 
 void main() {
   runApp(const MyApp());

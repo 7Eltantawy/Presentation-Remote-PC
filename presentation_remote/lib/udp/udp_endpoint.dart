@@ -34,7 +34,7 @@
 
 import 'dart:io';
 
-import 'udp_port.dart';
+import 'package:presentation_remote/udp/udp_port.dart';
 
 /// [Endpoint] represents a destination for UDP packets.
 ///
@@ -94,7 +94,7 @@ class Endpoint {
   /// Creates a random Endpoint.
   ///
   /// The OS will choose an appropriate [InternetAddress] and [Port].
-  Endpoint.any({port = Port.any}) {
+  Endpoint.any({Port port = Port.any}) {
     _address = InternetAddress.anyIPv4;
     _port = port;
   }

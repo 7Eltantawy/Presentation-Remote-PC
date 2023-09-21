@@ -36,7 +36,7 @@ class _SwipeGestureRecognizerState extends State<SwipeGestureRecognizer> {
   void initState() {
     super.initState();
     _horizontalSwipeStartingOffset =
-        _horizontalSwipeStartingOffset = const Offset(0, 0);
+        _horizontalSwipeStartingOffset = Offset.zero;
     _isSwipeDown = _isSwipeUp = _isSwipeRight = _isSwipeLeft = false;
   }
 

@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
-import 'package:presentation_remote/logic/transimitter_manager.dart';
+import 'package:presentation_remote/logic/transmitter_manager.dart';
 
-import 'swipe_gesture_recognizer.dart';
+import 'package:presentation_remote/widget/swipe_gesture_recognizer.dart';
 
 class DirectionPad extends StatefulWidget {
   const DirectionPad({Key? key}) : super(key: key);
@@ -16,22 +16,23 @@ class _DirectionPadState extends State<DirectionPad> {
     return Stack(
       children: [
         const Center(
-            child: Text(
-          "Arrows",
-          style: TextStyle(fontSize: 30),
-        )),
+          child: Text(
+            "Arrows",
+            style: TextStyle(fontSize: 30),
+          ),
+        ),
         SwipeGestureRecognizer(
           onSwipeDown: () async {
-            await TransimitterManager.send(key: "Down");
+            await TransmitterManager.send(key: "Down");
           },
           onSwipeUp: () async {
-            await TransimitterManager.send(key: "Up");
+            await TransmitterManager.send(key: "Up");
           },
           onSwipeLeft: () async {
-            await TransimitterManager.send(key: "Left");
+            await TransmitterManager.send(key: "Left");
           },
           onSwipeRight: () async {
-            await TransimitterManager.send(key: "Right");
+            await TransmitterManager.send(key: "Right");
           },
         ),
       ],

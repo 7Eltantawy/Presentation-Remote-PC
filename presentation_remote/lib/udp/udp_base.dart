@@ -35,7 +35,7 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'udp_endpoint.dart';
+import 'package:presentation_remote/udp/udp_endpoint.dart';
 
 typedef DatagramCallback = void Function(Datagram);
 
@@ -79,9 +79,8 @@ class UDP {
       ep = Endpoint.any(port: localEndpoint.port);
     }
 
-    return await RawDatagramSocket.bind(ep.address, ep.port.value)
-        .then((socket) {
-      var udp = UDP._(localEndpoint);
+    return RawDatagramSocket.bind(ep.address, ep.port.value).then((socket) {
+      final udp = UDP._(localEndpoint);
 
       if (localEndpoint.isMulticast) {
         socket.joinMulticast(localEndpoint.address);
@@ -104,18 +103,18 @@ class UDP {
     if (_closed) return -1;
 
     return Future.microtask(() async {
-      var prevState = _socket.broadcastEnabled;
+      final prevState = _socket.broadcastEnabled;
 
       if (remoteEndpoint.isBroadcast) {
         _socket.broadcastEnabled = true;
       }
 
-      var _dataCount =
+      final dataCount =
           _socket.send(data, remoteEndpoint.address, remoteEndpoint.port.value);
 
       _socket.broadcastEnabled = prevState;
 
-      return _dataCount;
+      return dataCount;
     });
   }
 
