@@ -45,11 +45,11 @@ class _QRCodeReaderState extends State<QRCodeReader> {
   Widget startWidget() {
     return Center(
       child: InkWell(
-        child: const Center(
+        child: Center(
           child: Text(
-            "Click to Scan QR",
+            "Click to Scan QR".toUpperCase(),
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 30, color: Colors.greenAccent),
+            style: const TextStyle(fontSize: 30, color: Colors.greenAccent),
           ),
         ),
         onTap: () {
@@ -64,10 +64,10 @@ class _QRCodeReaderState extends State<QRCodeReader> {
   Widget retryWidget() {
     return Center(
       child: ListTile(
-        title: const Text(
-          "Rescan QR",
+        title: Text(
+          "Restart scan QR".toUpperCase(),
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 40, color: Colors.redAccent),
+          style: const TextStyle(fontSize: 40, color: Colors.redAccent),
         ),
         onTap: () {
           setState(() {
