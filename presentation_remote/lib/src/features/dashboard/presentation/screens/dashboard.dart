@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:presentation_remote/src/core/logic/transmitter_manager.dart';
 import 'package:presentation_remote/src/core/widget/direction_pad.dart';
 import 'package:presentation_remote/src/core/widget/mouse_controller.dart';
+import 'package:presentation_remote/src/features/dashboard/presentation/components/air_screen.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -22,7 +23,7 @@ class _DashboardState extends State<Dashboard>
   void initState() {
     super.initState();
 
-    tabController = TabController(length: 3, vsync: this);
+    tabController = TabController(length: 4, vsync: this);
 
     _volumeBtnChannel.setMethodCallHandler((call) {
       if (call.method == "volumeBtnPressed") {
@@ -71,6 +72,10 @@ class _DashboardState extends State<Dashboard>
             Tab(
               icon: Icon(Icons.control_point_rounded),
               text: "All",
+            ),
+            Tab(
+              icon: Icon(Icons.air_rounded),
+              text: "Air",
             ),
           ],
         ),
@@ -121,6 +126,7 @@ class _DashboardState extends State<Dashboard>
               ],
             ),
           ),
+          AirScreen()
         ],
       ),
     );
